@@ -199,6 +199,51 @@
             transform: scale(1.05);
         }
 
+        /* --- СТИЛИ ДЛЯ СТРЕЛОК ГАЛЕРЕИ --- */
+        .gallery-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Кнопки стрелок */
+        .scroll-btn {
+            background-color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: absolute;
+            transition: transform 0.2s;
+        }
+
+        .scroll-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .prev-btn {
+            left: -25px;
+        }
+
+        .next-btn {
+            right: -25px;
+        }
+
+        /* Скрываем стрелки на телефоне (там листают пальцем) */
+        @media (max-width: 768px) {
+            .scroll-btn {
+                display: none;
+            }
+        }
+
         /* --- АКТИВНОСТИ --- */
         .activities {
             padding: 100px 0;
@@ -328,9 +373,19 @@
             display: block;
             margin-top: 30px;
             color: white;
-            font-size: 1.8rem;
-            font-family: 'Tenor Sans', sans-serif;
-            /* Цифры красивым шрифтом */
+            font-size: 2rem;
+            /* Чуть увеличили размер */
+            font-family: 'Manrope', sans-serif;
+            /* Поменяли на ровный шрифт */
+            font-weight: 700;
+            /* Сделали жирным */
+            letter-spacing: 1px;
+            /* Чуть раздвинули цифры */
+            transition: opacity 0.3s;
+        }
+
+        .phone-link:hover {
+            opacity: 0.8;
         }
 
         /* Мобильный адаптив */
@@ -359,6 +414,56 @@
                 text-align: center;
             }
         }
+
+        /* --- СТИЛИ ДЛЯ КАРТЫ --- */
+        .address-block {
+            margin-top: 50px;
+            max-width: 800px;
+            /* Ограничиваем ширину, чтобы карта не была гигантской */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .address-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-family: 'Tenor Sans', sans-serif;
+        }
+
+        .map-wrapper {
+            border-radius: var(--radius);
+            /* Скругляем углы карты */
+            overflow: hidden;
+            /* Обрезаем всё, что торчит */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            /* Красивая тень */
+            margin-bottom: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            /* Легкая рамочка */
+        }
+
+        /* Кнопка под картой */
+        .btn-map {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-map:hover {
+            color: white;
+            border-color: white;
+        }
+
+        /* Делаем карту чуть ниже на мобильных */
+        @media (max-width: 768px) {
+            .map-wrapper iframe {
+                height: 300px;
+            }
+        }
     </style>
 </head>
 
@@ -367,7 +472,7 @@
     <section class="hero">
         <div class="container">
             <h1>A-Frame на берегу озера</h1>
-            <p>Панорамный вид, горячая купель и тишина леса. Ваше место силы в Карелии.</p>
+            <p>Тишина, которая лечит. Ваш уютный дом на берегу озера.</p>
             <a href="#contacts" class="btn">Забронировать даты</a>
         </div>
     </section>
@@ -401,13 +506,25 @@
     <section class="gallery">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 30px;">Атмосфера дома</h2>
-            <div class="gallery-scroll">
-                <div class="gallery-item"><img src="gallery_1.jpeg" alt="Интерьер"></div>
-                <div class="gallery-item"><img src="gallery_2.jpeg" alt="Дом зимой"></div>
-                <div class="gallery-item"><img src="gallery_3.jpeg" alt="Детали"></div>
-                <div class="gallery-item"><img src="gallery_4.jpeg" alt="Природа"></div>
-                <div class="gallery-item"><img src="gallery_5.jpeg" alt="Баня"></div>
+
+            <div class="gallery-wrapper">
+                <button class="scroll-btn prev-btn" onclick="scrollGallery(-1)">&#10094;</button>
+
+                <div class="gallery-scroll" id="galleryContainer">
+                    <div class="gallery-item"><img src="gallery_1.jpeg" alt="1"></div>
+                    <div class="gallery-item"><img src="gallery_2.jpeg" alt="2"></div>
+                    <div class="gallery-item"><img src="gallery_3.jpeg" alt="3"></div>
+                    <div class="gallery-item"><img src="gallery_4.jpeg" alt="4"></div>
+                    <div class="gallery-item"><img src="gallery_5.jpeg" alt="5"></div>
+                    <div class="gallery-item"><img src="gallery_6.jpeg" alt="6"></div>
+                    <div class="gallery-item"><img src="gallery_7.jpeg" alt="7"></div>
+                    <div class="gallery-item"><img src="gallery_8.jpeg" alt="8"></div>
+                    <div class="gallery-item"><img src="gallery_9.jpeg" alt="9"></div>
+                </div>
+
+                <button class="scroll-btn next-btn" onclick="scrollGallery(1)">&#10095;</button>
             </div>
+
             <p
                 style="text-align: center; margin-top: 15px; opacity: 0.5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">
                 Листайте фото</p>
@@ -458,7 +575,7 @@
                     <img src="chan_2.jpg" class="activity-bg" alt="Купель Фурако">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Горячая купель</h3>
-                        <p class="activity-desc">Релакс в горячей воде с ароматом хвои.</p>
+                        <p class="activity-desc">Релакс в горячей воде с невероятным видом на природу.</p>
                     </div>
                 </div>
 
@@ -466,7 +583,8 @@
                     <img src="lodka.jpg" class="activity-bg" alt="Лодка и рыбалка">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Лодка и Рыбалка</h3>
-                        <p class="activity-desc">Щука, окунь, романтические закаты и туман.</p>
+                        <p class="activity-desc">Исследуйте озеро на лодке. Для рыбаков есть снасти
+                            (щука и окунь ждут!), а для романтиков — туман и тишина..</p>
                     </div>
                 </div>
 
@@ -478,12 +596,12 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 40px;">Отзывы гостей</h2>
             <div class="review-card">
-                <p>«Потрясающее место! Очень атмосферный треугольный домик. Вечером включали гирлянду и наслаждались
+                <p>«Потрясающее место! Очень атмосферный домик. Вечером включали гирлянду и наслаждались
                     видом. Обязательно вернемся!»</p>
                 <br><small>— Елена, Санкт-Петербург</small>
             </div>
             <div class="review-card">
-                <p>«Все продумано до мелочей. В доме очень тепло даже зимой. Мама хозяина очень гостеприимная, всё
+                <p>«Все продумано до мелочей. В доме очень тепло даже зимой. Елена очень гостеприимная хозяйка, всё
                     показала и рассказала.»</p>
                 <br><small>— Александр, Москва</small>
             </div>
@@ -500,11 +618,36 @@
                 <a href="https://t.me/+79217417587" target="_blank" class="btn-social btn-tg">Написать в Telegram</a>
             </div>
 
-            <a href="tel:+79217417587" class="phone-link">+7 (921) 741-75-87</a>
-            <p style="margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">📍 Карелия, Поселок ...</p>
+            <a href="tel:+79217417587" class="phone-link">+7 (921) 741-75-87 Елена</a>
+
+            <div class="address-block">
+                <p class="address-text">📍 Республика Карелия, город Лахденпохья, пос.Сикопохья,озеро Кейхяслампи
+                    Координаты: 61.648877, 30.025874</p>
+
+                <div class="map-wrapper">
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?ll=30.216390%2C61.478637&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NzQzOTE4NBJO0KDQvtGB0YHQuNGPLCDQoNC10YHQv9GD0LHQu9C40LrQsCDQmtCw0YDQtdC70LjRjywg0JvQsNGF0LTQtdC90L_QvtGF0YHQutC40Lkg0YDQsNC50L7QvSwg0LzQtdGB0YLQvdC-0YHRgtGMINCh0L7RgNC-0LvQsCIKDcq88EEVTNxKQDI%3D&z=15"
+                        width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+
+                <a href="https://yandex.ru/maps/?rtext=~61.478637,30.216390" target="_blank" class="btn-map">Открыть
+                    маршрут в Яндекс.Картах ↗</a>
+            </div>
+
         </div>
     </section>
 
+
+    <script>
+        function scrollGallery(direction) {
+            const container = document.getElementById('galleryContainer');
+            const scrollAmount = 340; // На сколько скроллить за раз
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 
 </html>
