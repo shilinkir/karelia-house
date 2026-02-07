@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уютный домик в Карелии | A-Frame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- НАСТРОЙКИ VIBE --- */
+        :root {
+            /* Палитра "Северная Ночь" */
+            --color-primary: #1A2F25;
+            --color-accent: #C57D3E;
+            /* Янтарный свет окон */
+            --color-bg: #F4F5F0;
+            --color-text: #2D3436;
+            --color-white: #ffffff;
+            --radius: 16px;
+        }
+
+        /* Общие стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary);
+            margin-top: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* --- ГЕРОЙ (ПЕРВЫЙ ЭКРАН) --- */
+        .hero {
+            height: 85vh;
+            /* <--- ИЗМЕНЕНИЕ: Чуть уменьшили высоту (было 95vh), чтобы меньше зумило */
+            /* Вставляем твое фото */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('karelia-main-1.jpg');
+            background-size: cover;
+            background-position: center center;
+            /* <--- ИЗМЕНЕНИЕ: Теперь фокус в центр домика */
+            display: flex;
+            align-items: center;
+            justify_content: center;
+            text-align: center;
+            color: var(--color-white);
+            /* Убрали скругления внизу */
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--color-white);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            /* Усилили тень для читаемости */
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 15px rgba(197, 125, 62, 0.6);
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #b87536;
+        }
+
+        /* --- О ДОМИКЕ --- */
+        .about {
+            padding: 80px 0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* --- ГАЛЕРЕЯ --- */
+        .gallery {
+            padding: 50px 0;
+            background-color: var(--color-white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            /* Чуть увеличили фото */
+            object-fit: cover;
+            border-radius: var(--radius);
+            transition: transform 0.3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* --- ОТЗЫВЫ --- */
+        .reviews {
+            padding: 80px 0;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 30px;
+            border-left: 4px solid var(--color-accent);
+            margin-bottom: 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        /* --- КОНТАКТЫ --- */
+        .contacts {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contacts h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .btn-wa {
+            background-color: #25D366;
+        }
+
+        .btn-wa:hover {
+            background-color: #20bd5a;
+        }
+
+        .btn-tg {
+            background-color: #229ED9;
+        }
+
+        .btn-tg:hover {
+            background-color: #1e8qb3;
+        }
+
+        .phone-link {
+            display: block;
+            margin-top: 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .phone-link:hover {
+            opacity: 1;
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <h1>A-Frame на берегу озера</h1>
+            <p>Панорамный вид на воду, горячая купель под звездами и абсолютная тишина. Ваше место силы в Карелии.</p>
+            <a href="#contacts" class="btn">Забронировать даты</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2 style="text-align: center;">Отдых, который вы запомните</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <span class="feature-icon">🌊</span>
+                    <h3>Свое озеро</h3>
+                    <p>Дом стоит прямо у воды. Панорамные окна открывают потрясающий вид на озеро. Идеально для
+                        утреннего кофе и закатов.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🧖‍♂️</span>
+                    <h3>Горячая купель</h3>
+                    <p>На террасе установлена купель (фурако). Нет ничего лучше, чем горячая ванна под открытым небом,
+                        когда вокруг морозный лес.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🌲</span>
+                    <h3>Полное уединение</h3>
+                    <p>Никаких шумных соседей и трасс. Только вы, шум ветра в верхушках сосен и пение птиц. Тишина,
+                        которую можно слушать.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px;">Атмосфера</h2>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=800&auto=format&fit=crop"
+                    class="gallery-img" alt="Интерьер">
+                <img src="https://images.unsplash.com/photo-1542332205-4da5aa631e88?q=80&w=800&auto=format&fit=crop"
+                    class="gallery-img" alt="Карельский лес">
+                <img src="https://images.unsplash.com/photo-1498644686862-2374e2a6d581?q=80&w=800&auto=format&fit=crop"
+                    class="gallery-img" alt="Детали уюта">
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px;">Что говорят гости</h2>
+            <div class="review-card">
+                <p>«Потрясающее место! Очень атмосферный треугольный домик. Вечером включали гирлянду и наслаждались
+                    видом. Обязательно вернемся!»</p>
+                <small>— Елена, Санкт-Петербург</small>
+            </div>
+            <div class="review-card">
+                <p>«Все продумано до мелочей. В доме очень тепло даже зимой. Мама хозяина очень гостеприимная, всё
+                    показала и рассказала.»</p>
+                <small>— Александр, Москва</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2>Ждем вас в гости!</h2>
+            <p>Свяжитесь с нами удобным способом:</p>
+
+            <div class="contact-buttons">
+                <a href="https://wa.me/79217417587" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
+
+                <a href="https://t.me/+79217417587" target="_blank" class="btn btn-tg">Написать в Telegram</a>
+            </div>
+
+            <a href="tel:+79217417587" class="phone-link">+7 (921) 741-75-87</a>
+
+            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">📍 Карелия, (здесь можно уточнить район)</p>
+        </div>
+    </section>
+
+</body>
+
+</html>
