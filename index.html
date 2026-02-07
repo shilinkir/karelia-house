@@ -8,44 +8,47 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Tenor+Sans&display=swap"
         rel="stylesheet">
 
     <style>
-        /* --- НАСТРОЙКИ VIBE --- */
+        /* --- НАСТРОЙКИ --- */
         :root {
-            /* Палитра "Северная Ночь" */
             --color-primary: #1A2F25;
+            /* Глубокий лес */
             --color-accent: #C57D3E;
-            /* Янтарный свет окон */
-            --color-bg: #F4F5F0;
-            --color-text: #2D3436;
+            /* Теплый янтарь */
+            --color-bg: #F9F9F7;
+            /* Молочный оттенок */
+            --color-text: #2c2c2c;
+            /* Мягкий черный */
             --color-white: #ffffff;
-            --radius: 16px;
+            --radius: 12px;
+            /* Аккуратные углы */
         }
 
         /* Общие стили */
         body {
             margin: 0;
             padding: 0;
-            /* ОБНОВЛЕНИЕ: Шрифт Montserrat для текста */
-            font-family: 'Montserrat', sans-serif;
+            /* Manrope - идеально читается на экранах */
+            font-family: 'Manrope', sans-serif;
             background-color: var(--color-bg);
             color: var(--color-text);
-            line-height: 1.7;
-            /* Чуть больше воздуха в тексте */
+            line-height: 1.6;
         }
 
         h1,
         h2,
         h3 {
-            /* ОБНОВЛЕНИЕ: Шрифт Cormorant Garamond для заголовков */
-            font-family: 'Cormorant Garamond', serif;
+            /* Tenor Sans - стиль дорогого журнала */
+            font-family: 'Tenor Sans', sans-serif;
             color: var(--color-primary);
             margin-top: 0;
-            font-weight: 700;
-            /* Жирное начертание для выразительности */
+            text-transform: uppercase;
+            /* Делаем заголовки заглавными */
+            letter-spacing: 1px;
+            /* Добавляем воздуха между буквами */
         }
 
         .container {
@@ -60,11 +63,11 @@
 
         /* --- ГЕРОЙ (ПЕРВЫЙ ЭКРАН) --- */
         .hero {
-            height: 85vh;
-            /* Вставляем твое фото */
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('karelia-home-main-photo.jpg');
+            height: 90vh;
+            /* Чуть выше */
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('karelia-home-main-photo.jpg');
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             display: flex;
             align-items: center;
             justify_content: center;
@@ -73,91 +76,98 @@
         }
 
         .hero h1 {
-            /* ОБНОВЛЕНИЕ: Увеличили размер и добавили курсив */
-            font-size: 4rem;
-            font-style: italic;
+            font-size: 3.5rem;
+            /* Оптимальный размер */
             margin-bottom: 20px;
             color: var(--color-white);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
-            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            /* Чуть аккуратнее шрифт */
+            font-size: 1.1rem;
             margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
-            font-weight: 500;
+            opacity: 0.9;
+            font-weight: 400;
         }
 
         .btn {
             display: inline-block;
-            padding: 16px 45px;
+            padding: 18px 40px;
             background-color: var(--color-accent);
             color: var(--color-white);
             border-radius: 50px;
+            /* Овальная кнопка */
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s, background 0.2s;
-            box-shadow: 0 4px 15px rgba(197, 125, 62, 0.6);
-            border: 2px solid transparent;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            /* Текст кнопки тоже капсом */
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(197, 125, 62, 0.4);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background-color: #b87536;
+            box-shadow: 0 6px 20px rgba(197, 125, 62, 0.6);
         }
 
         /* --- О ДОМИКЕ --- */
         .about {
-            padding: 80px 0;
+            padding: 100px 0;
         }
 
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         .feature-card {
             background: white;
-            padding: 30px;
+            padding: 20px;
+            /* Чуть меньше отступы внутри */
             border-radius: var(--radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             text-align: center;
+            /* Очень мягкая тень, почти незаметная */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
             transition: transform 0.3s;
         }
 
         .feature-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            border-radius: 8px;
+            /* Углы картинки чуть острее */
+            margin-bottom: 25px;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Увеличим заголовки внутри карточек */
         .feature-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
         }
 
         /* --- ГАЛЕРЕЯ --- */
         .gallery {
             padding: 50px 0;
-            background-color: var(--color-white);
+            background-color: white;
         }
 
         .gallery-scroll {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             overflow-x: auto;
             padding-bottom: 20px;
             scroll-snap-type: x mandatory;
@@ -169,10 +179,11 @@
         }
 
         .gallery-item {
-            flex: 0 0 300px;
-            height: 400px;
+            flex: 0 0 320px;
+            /* Картинки чуть шире */
+            height: 450px;
+            /* И выше */
             scroll-snap-align: center;
-            position: relative;
             border-radius: var(--radius);
             overflow: hidden;
         }
@@ -181,7 +192,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.5s;
         }
 
         .gallery-item:hover img {
@@ -190,8 +201,8 @@
 
         /* --- АКТИВНОСТИ --- */
         .activities {
-            padding: 80px 0;
-            background-color: #F9F9F9;
+            padding: 100px 0;
+            background-color: #F9F9F7;
         }
 
         .activities-grid {
@@ -201,27 +212,21 @@
         }
 
         .activity-card {
-            height: 350px;
+            height: 380px;
             position: relative;
             border-radius: var(--radius);
             overflow: hidden;
             display: flex;
             align-items: flex-end;
-            transition: transform 0.3s;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .activity-card:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .activity-overlay {
-            /* Градиент от черного к прозрачному: текст всегда будет на черном фоне */
-            background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+            /* Мягкий современный градиент */
+            background: linear-gradient(to top, rgba(26, 47, 37, 0.95) 0%, rgba(26, 47, 37, 0.6) 60%, transparent 100%);
             width: 100%;
-            padding: 25px;
-            /* Чуть меньше отступы, чтобы влезло больше текста */
+            padding: 30px;
             position: relative;
             z-index: 2;
         }
@@ -234,38 +239,25 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
-            z-index: 1;
         }
 
         .activity-card:hover .activity-bg {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .activity-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-            font-family: 'Cormorant Garamond', serif;
-            color: #ffffff;
-            /* Ярко-белый */
-            /* Тень под буквами для идеальной читаемости */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: none;
+            /* Убираем грубую тень */
         }
 
         .activity-desc {
-            font-size: 1rem;
-            /* Чуть крупнее */
-            font-weight: 600;
-            /* Жирный шрифт */
-            margin: 0;
-            line-height: 1.4;
-            font-family: 'Montserrat', sans-serif;
-            color: #ffffff;
-            /* Ярко-белый */
-            opacity: 1;
-            /* Убрали прозрачность */
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-            /* Тень для контраста */
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-weight: 400;
         }
 
         /* --- ОТЗЫВЫ --- */
@@ -274,76 +266,97 @@
         }
 
         .review-card {
-            background: #fff;
-            padding: 30px;
+            background: white;
+            padding: 40px;
+            border: 1px solid #eee;
+            /* Тонкая рамка вместо жирной тени */
             border-left: 4px solid var(--color-accent);
             margin-bottom: 20px;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            border-radius: var(--radius);
+        }
+
+        .review-card p {
+            font-style: italic;
+            font-size: 1.05rem;
         }
 
         /* --- КОНТАКТЫ --- */
         .contacts {
             background-color: var(--color-primary);
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
 
         .contacts h2 {
             color: white;
-            margin-bottom: 10px;
         }
 
         .contact-buttons {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
             margin-top: 40px;
-            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Кнопки мессенджеров */
+        .btn-social {
+            padding: 15px 35px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
         }
 
         .btn-wa {
             background-color: #25D366;
         }
 
-        .btn-wa:hover {
-            background-color: #20bd5a;
-        }
-
         .btn-tg {
             background-color: #229ED9;
         }
 
-        .btn-tg:hover {
-            background-color: #1e8qb3;
+        .btn-social:hover {
+            opacity: 0.9;
         }
 
         .phone-link {
             display: block;
-            margin-top: 20px;
+            margin-top: 30px;
             color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            opacity: 0.9;
-            transition: opacity 0.2s;
+            font-size: 1.8rem;
+            font-family: 'Tenor Sans', sans-serif;
+            /* Цифры красивым шрифтом */
         }
 
-        .phone-link:hover {
-            opacity: 1;
-        }
-
-        /* Адаптив для мобильных */
+        /* Мобильный адаптив */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.8rem;
-                /* Чуть меньше на мобильном, чтобы влезло */
+                font-size: 2.2rem;
             }
 
             .hero {
                 height: 80vh;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .btn-social {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
             }
         }
     </style>
@@ -354,20 +367,20 @@
     <section class="hero">
         <div class="container">
             <h1>A-Frame на берегу озера</h1>
-            <p>Панорамный вид на воду, горячая купель под звездами и абсолютная тишина. Ваше место силы в Карелии.</p>
+            <p>Панорамный вид, горячая купель и тишина леса. Ваше место силы в Карелии.</p>
             <a href="#contacts" class="btn">Забронировать даты</a>
         </div>
     </section>
 
     <section class="about">
         <div class="container">
-            <h2 style="text-align: center;">Отдых, который вы запомните</h2>
+            <h2 style="text-align: center;">Отдых, который запомнится</h2>
             <div class="features">
 
                 <div class="feature-card">
                     <img src="lake.jpeg" class="feature-img" alt="Вид на озеро">
                     <h3>Свое озеро</h3>
-                    <p>Дом стоит прямо у озера. Панорамные окна открывают вид, от которого захватывает дух.</p>
+                    <p>Дом стоит прямо у воды. Панорамные окна открывают вид, от которого захватывает дух.</p>
                 </div>
 
                 <div class="feature-card">
@@ -385,45 +398,27 @@
         </div>
     </section>
 
-
     <section class="gallery">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 30px;">Атмосфера дома</h2>
-
             <div class="gallery-scroll">
-
-                <div class="gallery-item">
-                    <img src="gallery_1.jpeg" alt="Интерьер">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="gallery_2.jpeg" alt="Дом зимой">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="gallery_3.jpeg" alt="Детали">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="gallery_4.jpeg" alt="Природа">
-                </div>
-
-                <div class="gallery-item">
-                    <img src="gallery_5.jpeg" alt="Баня">
-                </div>
-
+                <div class="gallery-item"><img src="gallery_1.jpeg" alt="Интерьер"></div>
+                <div class="gallery-item"><img src="gallery_2.jpeg" alt="Дом зимой"></div>
+                <div class="gallery-item"><img src="gallery_3.jpeg" alt="Детали"></div>
+                <div class="gallery-item"><img src="gallery_4.jpeg" alt="Природа"></div>
+                <div class="gallery-item"><img src="gallery_5.jpeg" alt="Баня"></div>
             </div>
-            <p style="text-align: center; margin-top: 10px; opacity: 0.6; font-size: 0.9rem;">← Листайте фото →</p>
+            <p
+                style="text-align: center; margin-top: 15px; opacity: 0.5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">
+                Листайте фото</p>
         </div>
     </section>
 
     <section class="activities">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 10px;">Чем заняться рядом</h2>
-            <p
-                style="text-align: center; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0.8;">
-                Мы находимся в удачном месте: главные достопримечательности Карелии совсем рядом, а развлечения — прямо
-                на территории.</p>
+            <p style="text-align: center; margin-bottom: 50px; opacity: 0.7;">Главные достопримечательности Карелии и
+                развлечения на территории</p>
 
             <div class="activities-grid">
 
@@ -431,8 +426,7 @@
                     <img src="ruskeala.jpg" class="activity-bg" alt="Рускеала">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Горный парк Рускеала</h3>
-                        <p class="activity-desc">Знаменитый мраморный каньон. Прогулки на лодках, подземные экскурсии и
-                            зиплайн.</p>
+                        <p class="activity-desc">Мраморный каньон, лодки и зиплайн.</p>
                     </div>
                 </div>
 
@@ -440,8 +434,7 @@
                     <img src="ladojskie-shheri.jpg" class="activity-bg" alt="Ладожские шхеры">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Ладожские шхеры</h3>
-                        <p class="activity-desc">Национальный парк с сотнями скалистых островов. Организуем прогулки на
-                            катере.</p>
+                        <p class="activity-desc">Национальный парк со скалистыми островами.</p>
                     </div>
                 </div>
 
@@ -449,8 +442,7 @@
                     <img src="gora.jpeg" class="activity-bg" alt="Гора Паасо">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Гора Паасо</h3>
-                        <p class="activity-desc">Живописная тропа на вершину скалы. Потрясающие виды на леса и
-                            проходящий ретропоезд.</p>
+                        <p class="activity-desc">Живописная тропа и вид на ретропоезд.</p>
                     </div>
                 </div>
 
@@ -458,16 +450,15 @@
                     <img src="sap.jpg" class="activity-bg" alt="Сап-борды">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Катание на сапах</h3>
-                        <p class="activity-desc">Встречайте рассветы на озере. Сапы можно арендовать прямо у нас.</p>
+                        <p class="activity-desc">Встречайте рассветы на озере прямо у дома.</p>
                     </div>
                 </div>
 
                 <div class="activity-card">
                     <img src="chan_2.jpg" class="activity-bg" alt="Купель Фурако">
                     <div class="activity-overlay">
-                        <h3 class="activity-title">Вечер в горячей купели</h3>
-                        <p class="activity-desc">Идеальное завершение активного дня — расслабление в горячей воде с
-                            ароматом хвои.</p>
+                        <h3 class="activity-title">Горячая купель</h3>
+                        <p class="activity-desc">Релакс в горячей воде с ароматом хвои.</p>
                     </div>
                 </div>
 
@@ -475,8 +466,7 @@
                     <img src="lodka.jpg" class="activity-bg" alt="Лодка и рыбалка">
                     <div class="activity-overlay">
                         <h3 class="activity-title">Лодка и Рыбалка</h3>
-                        <p class="activity-desc">Встречайте рассветы на веслах посреди озера. Для рыбаков есть снасти
-                            (щука и окунь ждут!), а для романтиков — туман и тишина.</p>
+                        <p class="activity-desc">Щука, окунь, романтические закаты и туман.</p>
                     </div>
                 </div>
 
@@ -486,34 +476,32 @@
 
     <section class="reviews">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 30px;">Что говорят гости</h2>
+            <h2 style="text-align: center; margin-bottom: 40px;">Отзывы гостей</h2>
             <div class="review-card">
                 <p>«Потрясающее место! Очень атмосферный треугольный домик. Вечером включали гирлянду и наслаждались
                     видом. Обязательно вернемся!»</p>
-                <small>— Елена, Санкт-Петербург</small>
+                <br><small>— Елена, Санкт-Петербург</small>
             </div>
             <div class="review-card">
                 <p>«Все продумано до мелочей. В доме очень тепло даже зимой. Мама хозяина очень гостеприимная, всё
                     показала и рассказала.»</p>
-                <small>— Александр, Москва</small>
+                <br><small>— Александр, Москва</small>
             </div>
         </div>
     </section>
 
     <section id="contacts" class="contacts">
         <div class="container">
-            <h2>Ждем вас в гости!</h2>
-            <p>Свяжитесь с нами удобным способом:</p>
+            <h2>Ждем вас в гости</h2>
+            <p>Напишите нам, чтобы узнать свободные даты</p>
 
             <div class="contact-buttons">
-                <a href="https://wa.me/79217417587" target="_blank" class="btn btn-wa">Написать в WhatsApp</a>
-
-                <a href="https://t.me/+79217417587" target="_blank" class="btn btn-tg">Написать в Telegram</a>
+                <a href="https://wa.me/79217417587" target="_blank" class="btn-social btn-wa">Написать в WhatsApp</a>
+                <a href="https://t.me/+79217417587" target="_blank" class="btn-social btn-tg">Написать в Telegram</a>
             </div>
 
             <a href="tel:+79217417587" class="phone-link">+7 (921) 741-75-87</a>
-
-            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">📍 Карелия, (здесь можно уточнить район)</p>
+            <p style="margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">📍 Карелия, Поселок ...</p>
         </div>
     </section>
 
